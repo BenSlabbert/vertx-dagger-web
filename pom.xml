@@ -32,7 +32,7 @@
 
     <!--deps-->
     <vertx.version>5.0.0.CR3</vertx.version>
-    <github.benslabbert.vdw.codegen.version>1.1.0</github.benslabbert.vdw.codegen.version>
+    <github.benslabbert.vdw.codegen.version>1.4.0</github.benslabbert.vdw.codegen.version>
   </properties>
 
   <dependencyManagement>
