@@ -19,6 +19,7 @@ class HomeHandler {
   @HasRole("admin")
   @Get(path = "/raw")
   void ctx(@WebRequest.RoutingContext RoutingContext ctx) {
+      ctx.user();
     ctx.end();
   }
 
@@ -26,5 +27,11 @@ class HomeHandler {
   @Get(path = "/data")
   ResponseDto ctx(@Valid @Body RequestDto dto) {
     return new ResponseDto(dto.data());
+  }
+
+  @HasRole("admin")
+  @Get(path = "/data")
+  void voidReturn(@Valid @Body RequestDto dto) {
+      // do nothing
   }
 }
