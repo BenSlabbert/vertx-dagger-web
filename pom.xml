@@ -15,6 +15,7 @@
 
   <modules>
     <module>app</module>
+    <module>multi-verticle-app</module>
   </modules>
 
   <distributionManagement>
