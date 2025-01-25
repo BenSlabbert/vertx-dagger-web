@@ -7,15 +7,34 @@ import jakarta.inject.Singleton;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
+import java.time.Duration;
+import org.hibernate.validator.HibernateValidator;
+import org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator;
+import org.hibernate.validator.resourceloading.PlatformResourceBundleLocator;
 
 @Singleton
-public final class ValidatorFactoryProvider implements ValidatorProvider, AutoCloseable {
+final class ValidatorFactoryProvider implements ValidatorProvider, AutoCloseable {
 
   private final ValidatorFactory factory;
+  private final Validator validator;
 
   @Inject
   ValidatorFactoryProvider() {
-    this.factory = Validation.buildDefaultValidatorFactory();
+    // https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#chapter-bootstrapping
+    this.factory =
+        Validation.byProvider(HibernateValidator.class)
+            .configure()
+            // do not use XML
+            .ignoreXmlConfiguration()
+            // fluent programmatic configuration
+            .temporalValidationTolerance(Duration.ofMillis(100L))
+            .showValidatedValuesInTraceLogs(true)
+            .failFast(true)
+            .messageInterpolator(
+                new ResourceBundleMessageInterpolator(
+                    new PlatformResourceBundleLocator("messages")) {})
+            .buildValidatorFactory();
+    this.validator = this.factory.getValidator();
   }
 
   @Override
@@ -27,6 +46,6 @@ public final class ValidatorFactoryProvider implements ValidatorProvider, AutoCl
 
   @Override
   public Validator getValidator() {
-    return factory.getValidator();
+    return validator;
   }
 }

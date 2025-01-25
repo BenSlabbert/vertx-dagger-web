@@ -9,6 +9,7 @@ import github.benslabbert.vdw.app.config.ConfigModule;
 import github.benslabbert.vdw.app.web.RouterFactory;
 import github.benslabbert.vdw.app.web.ServerFactory;
 import github.benslabbert.vdw.app.web.handler.HandlerModule;
+import github.benslabbert.vdw.codegen.commons.ValidatorProvider;
 import io.vertx.core.Vertx;
 import jakarta.annotation.Nullable;
 import jakarta.inject.Inject;
@@ -30,6 +31,8 @@ public interface Provider {
   RouterFactory routerFactory();
 
   Set<AutoCloseable> closeables();
+
+  ValidatorProvider validatorProvider();
 
   @Component.Builder
   interface Builder {
