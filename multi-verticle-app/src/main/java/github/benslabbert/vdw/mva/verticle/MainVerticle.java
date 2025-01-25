@@ -1,6 +1,11 @@
 /* Licensed under Apache-2.0 2025. */
 package github.benslabbert.vdw.mva.verticle;
 
+import static io.vertx.core.Future.all;
+import static io.vertx.core.ThreadingModel.EVENT_LOOP;
+import static io.vertx.core.ThreadingModel.VIRTUAL_THREAD;
+import static io.vertx.core.ThreadingModel.WORKER;
+
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Future;
@@ -15,58 +20,30 @@ public class MainVerticle extends AbstractVerticle {
 
   @Override
   public void start(Promise<Void> startPromise) {
-    log.info("Starting MainVerticle");
+    log.info("Starting MainVerticle config: {}", config());
 
-    Future<String> workerDeploymentId =
-        vertx
-            .deployVerticle(
-                WorkerVerticle::new,
-                new DeploymentOptions()
-                    .setConfig(config())
-                    .setThreadingModel(ThreadingModel.WORKER)
-                    .setInstances(2))
-            .onFailure(t -> log.error("WorkerVerticle deployment failed", t))
-            .onSuccess(id -> log.info("WorkerVerticle deployment ID: {}", id));
+    Future<String> workerDeployment =
+        vertx.deployVerticle(WorkerVerticle::new, getDeploymentOptions(WORKER));
+    Future<String> eventDeployment =
+        vertx.deployVerticle(EventVerticle::new, getDeploymentOptions(EVENT_LOOP));
+    Future<String> webDeployment =
+        vertx.deployVerticle(WebVerticle::new, getDeploymentOptions(EVENT_LOOP));
+    Future<String> virtualDeployment =
+        vertx.deployVerticle(VirtualThreadVerticle::new, getDeploymentOptions(VIRTUAL_THREAD));
 
-    Future<String> eventDeploymentId =
-        vertx
-            .deployVerticle(
-                EventVerticle::new,
-                new DeploymentOptions()
-                    .setConfig(config())
-                    .setThreadingModel(ThreadingModel.EVENT_LOOP)
-                    .setInstances(2))
-            .onFailure(t -> log.error("EventVerticle deployment failed", t))
-            .onSuccess(id -> log.info("EventVerticle deployment ID: {}", id));
-
-    Future<String> webDeploymentId =
-        vertx
-            .deployVerticle(
-                WebVerticle::new,
-                new DeploymentOptions()
-                    .setConfig(config())
-                    .setThreadingModel(ThreadingModel.EVENT_LOOP)
-                    .setInstances(2))
-            .onFailure(t -> log.error("WebVerticle deployment failed", t))
-            .onSuccess(id -> log.info("WebVerticle deployment ID: {}", id));
-
-    Future<String> virtualDeploymentId =
-        vertx
-            .deployVerticle(
-                VirtualThreadVerticle::new,
-                new DeploymentOptions()
-                    .setConfig(config())
-                    .setThreadingModel(ThreadingModel.VIRTUAL_THREAD)
-                    .setInstances(2))
-            .onFailure(t -> log.error("VirtualThreadVerticle deployment failed", t))
-            .onSuccess(id -> log.info("VirtualThreadVerticle deployment ID: {}", id));
-
-    Future.all(workerDeploymentId, eventDeploymentId, webDeploymentId, virtualDeploymentId)
+    all(workerDeployment, eventDeployment, webDeployment, virtualDeployment)
         .onComplete(
             ar -> {
               if (ar.failed()) startPromise.fail(ar.cause());
               else startPromise.complete();
             });
+  }
+
+  private DeploymentOptions getDeploymentOptions(ThreadingModel threadingModel) {
+    return new DeploymentOptions()
+        .setConfig(config())
+        .setThreadingModel(threadingModel)
+        .setInstances(2);
   }
 
   @Override

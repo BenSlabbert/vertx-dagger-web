@@ -6,7 +6,7 @@
   <import class="ch.qos.logback.core.ConsoleAppender" />
   <import class="ch.qos.logback.core.hook.DefaultShutdownHook" />
   <shutdownHook class="DefaultShutdownHook">
-    <delay>5s</delay>
+    <delay>250</delay>
   </shutdownHook>
 
   <appender name="STDOUT" class="ConsoleAppender">

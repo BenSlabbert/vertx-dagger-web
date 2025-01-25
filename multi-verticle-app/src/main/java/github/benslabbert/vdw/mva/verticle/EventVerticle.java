@@ -12,7 +12,7 @@ class EventVerticle extends AbstractVerticle {
 
   @Override
   public void start(Promise<Void> startPromise) {
-    log.info("Starting EventVerticle");
+    log.info("Starting EventVerticle config: {}", config());
     startPromise.complete();
   }
 

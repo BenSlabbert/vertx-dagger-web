@@ -12,7 +12,7 @@ class WebVerticle extends AbstractVerticle {
 
   @Override
   public void start(Promise<Void> startPromise) {
-    log.info("Starting WebVerticle");
+    log.info("Starting WebVerticle config: {}", config());
     startPromise.complete();
   }
 

@@ -12,7 +12,7 @@ class VirtualThreadVerticle extends AbstractVerticle {
 
   @Override
   public void start(Promise<Void> startPromise) {
-    log.info("Starting VirtualThreadVerticle");
+    log.info("Starting VirtualThreadVerticle config: {}", config());
     startPromise.complete();
   }
 

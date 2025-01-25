@@ -12,7 +12,7 @@ class WorkerVerticle extends AbstractVerticle {
 
   @Override
   public void start(Promise<Void> startPromise) {
-    log.info("Starting WorkerVerticle");
+    log.info("Starting WorkerVerticle config: {}", config());
     startPromise.complete();
   }
 
