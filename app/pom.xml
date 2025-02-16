@@ -33,6 +33,16 @@
       <artifactId>dagger</artifactId>
     </dependency>
     <dependency>
+      <groupId>github.benslabbert.vdw</groupId>
+      <artifactId>spi</artifactId>
+      <version>${revision}</version>
+    </dependency>
+    <dependency>
+      <groupId>github.benslabbert.vdw</groupId>
+      <artifactId>spi-dep</artifactId>
+      <version>${revision}</version>
+    </dependency>
+    <dependency>
       <groupId>github.benslabbert.vdw.codegen</groupId>
       <artifactId>annotation</artifactId>
     </dependency>

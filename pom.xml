@@ -16,6 +16,8 @@
   <modules>
     <module>app</module>
     <module>multi-verticle-app</module>
+    <module>spi-dep</module>
+    <module>spi</module>
   </modules>
 
   <distributionManagement>

@@ -6,6 +6,8 @@ import dagger.Component;
 import dagger.Module;
 import dagger.Provides;
 import github.benslabbert.vdw.app.config.ConfigModule;
+import github.benslabbert.vdw.app.spi.SpiDependency;
+import github.benslabbert.vdw.app.spi.SpiProvider;
 import github.benslabbert.vdw.app.web.RouterFactory;
 import github.benslabbert.vdw.app.web.ServerFactory;
 import github.benslabbert.vdw.app.web.handler.HandlerModule;
@@ -19,7 +21,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Singleton
-@Component(modules = {Provider.EagerModule.class, HandlerModule.class, ConfigModule.class})
+@Component(
+    modules = {
+      Provider.EagerModule.class,
+      HandlerModule.class,
+      ConfigModule.class,
+      SpiProvider.class
+    })
 public interface Provider {
 
   Logger log = LoggerFactory.getLogger(Provider.class);
@@ -33,6 +41,8 @@ public interface Provider {
   Set<AutoCloseable> closeables();
 
   ValidatorProvider validatorProvider();
+
+  SpiDependency spiDependency();
 
   @Component.Builder
   interface Builder {

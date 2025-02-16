@@ -3,6 +3,7 @@ package github.benslabbert.vdw.app.verticle;
 
 import github.benslabbert.vdw.app.di.DaggerProvider;
 import github.benslabbert.vdw.app.di.Provider;
+import github.benslabbert.vdw.app.spi.SpiDependency;
 import github.benslabbert.vdw.app.web.RouterFactory;
 import github.benslabbert.vdw.app.web.ServerFactory;
 import io.vertx.core.AbstractVerticle;
@@ -28,6 +29,10 @@ public class DefaultVerticle extends AbstractVerticle {
     log.info("Starting verticle");
     provider = DaggerProvider.builder().vertx(vertx).build();
     provider.init();
+    SpiDependency spiDependency = provider.spiDependency();
+    spiDependency.init(vertx, new Object());
+    String s = spiDependency.doWork();
+    log.info("SpiDependency returned: {}", s);
 
     ServerFactory serverFactory = provider.serverFactory();
     RouterFactory routerFactory = provider.routerFactory();
