@@ -35,7 +35,7 @@
 
     <!--deps-->
     <vertx.version>5.0.0.CR5</vertx.version>
-    <github.benslabbert.vdw.codegen.version>1.32.0</github.benslabbert.vdw.codegen.version>
+    <github.benslabbert.vdw.codegen.version>1.33.0</github.benslabbert.vdw.codegen.version>
   </properties>
 
   <dependencyManagement>
