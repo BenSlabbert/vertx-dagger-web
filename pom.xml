@@ -34,6 +34,7 @@
     <shade.skip>false</shade.skip>
 
     <!--deps-->
+    <dagger.version>2.55</dagger.version>
     <vertx.version>5.0.0.CR5</vertx.version>
     <github.benslabbert.vdw.codegen.version>1.39.0</github.benslabbert.vdw.codegen.version>
   </properties>
