@@ -10,7 +10,6 @@ import io.vertx.ext.web.handler.BodyHandler;
 import io.vertx.ext.web.handler.CorsHandler;
 import io.vertx.ext.web.handler.LoggerFormat;
 import io.vertx.ext.web.handler.LoggerHandler;
-import io.vertx.ext.web.handler.SecurityAuditLoggerHandler;
 import io.vertx.ext.web.handler.SessionHandler;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
@@ -58,7 +57,6 @@ public class RouterFactory {
               ctx.response().setStatusCode(500).end();
             })
         .handler(LoggerHandler.create(false, LoggerFormat.DEFAULT))
-        .handler(SecurityAuditLoggerHandler.create())
         .handler(sessionHandler)
         .handler(CorsHandler.create())
         .handler(BodyHandler.create().setBodyLimit(1024L * 100L))

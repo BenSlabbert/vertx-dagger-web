@@ -35,32 +35,24 @@
 
     <!--deps-->
     <vertx.version>5.0.0.CR5</vertx.version>
-    <github.benslabbert.vdw.codegen.version>1.36.0</github.benslabbert.vdw.codegen.version>
+    <github.benslabbert.vdw.codegen.version>1.39.0</github.benslabbert.vdw.codegen.version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>github.benslabbert.vdw.codegen</groupId>
+        <artifactId>bom</artifactId>
+        <version>${github.benslabbert.vdw.codegen.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
       <dependency>
         <groupId>io.vertx</groupId>
         <artifactId>vertx-stack-depchain</artifactId>
         <version>${vertx.version}</version>
         <type>pom</type>
         <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>github.benslabbert.vdw.codegen</groupId>
-        <artifactId>annotation</artifactId>
-        <version>${github.benslabbert.vdw.codegen.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>github.benslabbert.vdw.codegen</groupId>
-        <artifactId>commons</artifactId>
-        <version>${github.benslabbert.vdw.codegen.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>github.benslabbert.vdw.codegen</groupId>
-        <artifactId>generator</artifactId>
-        <version>${github.benslabbert.vdw.codegen.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
