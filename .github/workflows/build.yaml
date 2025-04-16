@@ -17,6 +17,11 @@ jobs:
       actions: "read"
       contents: "read"
       security-events: "write"
+    strategy:
+      fail-fast: false
+      matrix:
+        language:
+        - "java"
     steps:
     - uses: "actions/checkout@v4"
     - name: "Set up JDK 23"
@@ -33,5 +38,7 @@ jobs:
     - run: "mvn -s settings.xml spotless:check install"
     - name: "Initialize CodeQL"
       uses: "github/codeql-action/init@v3"
+      with:
+        languages: "${{ matrix.language }}"
     - name: "Perform CodeQL Analysis"
       uses: "github/codeql-action/analyze@v3"
