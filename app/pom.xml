@@ -38,6 +38,10 @@
     </dependency>
     <dependency>
       <groupId>github.benslabbert.txmanager</groupId>
+      <artifactId>agent</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>github.benslabbert.txmanager</groupId>
       <artifactId>annotation</artifactId>
     </dependency>
     <dependency>
