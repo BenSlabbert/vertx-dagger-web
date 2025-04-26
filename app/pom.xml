@@ -37,6 +37,10 @@
       <artifactId>guava</artifactId>
     </dependency>
     <dependency>
+      <groupId>github.benslabbert.txmanager</groupId>
+      <artifactId>annotation</artifactId>
+    </dependency>
+    <dependency>
       <groupId>github.benslabbert.vdw</groupId>
       <artifactId>spi</artifactId>
       <version>${revision}</version>
@@ -53,6 +57,10 @@
     <dependency>
       <groupId>github.benslabbert.vdw.codegen</groupId>
       <artifactId>commons</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>github.benslabbert.vertx-dagger-commons</groupId>
+      <artifactId>transaction</artifactId>
     </dependency>
     <dependency>
       <groupId>io.vertx</groupId>
@@ -142,6 +150,24 @@
   <build>
     <finalName>${finalName}</finalName>
     <plugins>
+      <plugin>
+        <groupId>net.bytebuddy</groupId>
+        <artifactId>byte-buddy-maven-plugin</artifactId>
+        <dependencies>
+          <dependency>
+            <groupId>github.benslabbert.txmanager</groupId>
+            <artifactId>plugin</artifactId>
+            <version>${txmanager.version}</version>
+          </dependency>
+        </dependencies>
+        <executions>
+          <execution>
+            <goals>
+              <goal>transform</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>

@@ -37,14 +37,30 @@
     <vertx.version>5.0.0.CR7</vertx.version>
     <github.benslabbert.vdw.codegen.version>1.42.0</github.benslabbert.vdw.codegen.version>
     <vertx-json-writer.version>1.95.0</vertx-json-writer.version>
+    <vertx-dagger-commons.version>1.114.0</vertx-dagger-commons.version>
+    <txmanager.version>1.100.0</txmanager.version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <groupId>github.benslabbert.txmanager</groupId>
+        <artifactId>bom</artifactId>
+        <version>${txmanager.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
         <groupId>github.benslabbert.vdw.codegen</groupId>
         <artifactId>bom</artifactId>
         <version>${github.benslabbert.vdw.codegen.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>github.benslabbert.vertx-dagger-commons</groupId>
+        <artifactId>bom</artifactId>
+        <version>${vertx-dagger-commons.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
