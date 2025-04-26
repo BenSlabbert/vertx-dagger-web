@@ -43,40 +43,59 @@
 
   <dependencyManagement>
     <dependencies>
-      <dependency>
-        <groupId>github.benslabbert.txmanager</groupId>
-        <artifactId>bom</artifactId>
-        <version>${txmanager.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>github.benslabbert.vdw.codegen</groupId>
-        <artifactId>bom</artifactId>
-        <version>${github.benslabbert.vdw.codegen.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>github.benslabbert.vertx-dagger-commons</groupId>
-        <artifactId>bom</artifactId>
-        <version>${vertx-dagger-commons.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>github.benslabbert.vertx-json-writer</groupId>
-        <artifactId>bom</artifactId>
-        <version>${vertx-json-writer.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
+      <!--cannot use bom imports for other vert.x 4.x.x deps-->
       <dependency>
         <groupId>io.vertx</groupId>
         <artifactId>vertx-stack-depchain</artifactId>
         <version>${vertx.version}</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>github.benslabbert.txmanager</groupId>
+        <artifactId>agent</artifactId>
+        <version>${txmanager.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>github.benslabbert.txmanager</groupId>
+        <artifactId>annotation</artifactId>
+        <version>${txmanager.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>github.benslabbert.txmanager</groupId>
+        <artifactId>plugin</artifactId>
+        <version>${txmanager.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>github.benslabbert.vdw.codegen</groupId>
+        <artifactId>annotation</artifactId>
+        <version>${github.benslabbert.vdw.codegen.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>github.benslabbert.vdw.codegen</groupId>
+        <artifactId>commons</artifactId>
+        <version>${github.benslabbert.vdw.codegen.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>github.benslabbert.vdw.codegen</groupId>
+        <artifactId>generator</artifactId>
+        <version>${github.benslabbert.vdw.codegen.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>github.benslabbert.vertx-dagger-commons</groupId>
+        <artifactId>transaction</artifactId>
+        <version>${vertx-dagger-commons.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>github.benslabbert.vertx-json-writer</groupId>
+        <artifactId>annotation</artifactId>
+        <version>${vertx-json-writer.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>github.benslabbert.vertx-json-writer</groupId>
+        <artifactId>processor</artifactId>
+        <version>${vertx-json-writer.version}</version>
+        <scope>provided</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>

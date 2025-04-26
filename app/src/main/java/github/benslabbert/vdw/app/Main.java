@@ -1,6 +1,8 @@
 /* Licensed under Apache-2.0 2024. */
 package github.benslabbert.vdw.app;
 
+import io.netty.util.internal.logging.InternalLoggerFactory;
+import io.netty.util.internal.logging.Slf4JLoggerFactory;
 import io.vertx.core.ThreadingModel;
 import io.vertx.launcher.application.HookContext;
 import io.vertx.launcher.application.VertxApplication;
@@ -13,6 +15,8 @@ public class Main extends VertxApplication {
   private static final Logger log = LoggerFactory.getLogger(Main.class);
 
   public static void main(String[] args) {
+    InternalLoggerFactory.setDefaultFactory(Slf4JLoggerFactory.INSTANCE);
+
     log.info("Starting");
     int code = new Main(args).launch();
     log.info("launch successful ? {}", 0 == code);
