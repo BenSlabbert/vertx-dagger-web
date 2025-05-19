@@ -34,10 +34,10 @@
     <shade.skip>false</shade.skip>
 
     <!--deps-->
-    <github.benslabbert.vdw.codegen.version>1.58.0</github.benslabbert.vdw.codegen.version>
+    <github.benslabbert.vdw.codegen.version>1.59.0</github.benslabbert.vdw.codegen.version>
     <vertx-json-writer.version>1.111.0</vertx-json-writer.version>
-    <vertx-dagger-commons.version>1.133.0</vertx-dagger-commons.version>
-    <txmanager.version>1.113.0</txmanager.version>
+    <vertx-dagger-commons.version>1.134.0</vertx-dagger-commons.version>
+    <txmanager.version>1.114.0</txmanager.version>
   </properties>
 
   <dependencyManagement>
