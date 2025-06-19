@@ -4,6 +4,7 @@ package github.benslabbert.vdw.app.web.handler;
 import com.google.auto.value.AutoBuilder;
 import github.benslabbert.vertxjsonwriter.annotation.JsonWriter;
 import io.vertx.core.json.JsonObject;
+import io.vertx.json.schema.Validator;
 import jakarta.validation.constraints.NotBlank;
 
 @JsonWriter
@@ -19,6 +20,10 @@ public record RequestDto(@NotBlank @CheckString(strict = true) String data) {
 
   public static Builder builder() {
     return new AutoBuilder_RequestDto_Builder();
+  }
+
+  public static Validator getValidator() {
+    return RequestDto_JsonWriter.getValidator();
   }
 
   @AutoBuilder
