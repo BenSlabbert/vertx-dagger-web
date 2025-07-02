@@ -34,9 +34,9 @@
     <shade.skip>false</shade.skip>
 
     <!--deps-->
-    <github.benslabbert.vdw.codegen.version>2.14.0</github.benslabbert.vdw.codegen.version>
+    <github.benslabbert.vdw.codegen.version>2.15.0</github.benslabbert.vdw.codegen.version>
     <vertx-json-writer.version>1.129.0</vertx-json-writer.version>
-    <vertx-dagger-commons.version>1.160.0</vertx-dagger-commons.version>
+    <vertx-dagger-commons.version>1.161.0</vertx-dagger-commons.version>
     <txmanager.version>1.133.0</txmanager.version>
   </properties>
 
