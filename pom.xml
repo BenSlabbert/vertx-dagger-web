@@ -34,10 +34,10 @@
     <shade.skip>false</shade.skip>
 
     <!--deps-->
-    <github.benslabbert.vdw.codegen.version>3.33.0</github.benslabbert.vdw.codegen.version>
+    <github.benslabbert.vdw.codegen.version>3.34.0</github.benslabbert.vdw.codegen.version>
     <vertx-json-writer.version>1.175.0</vertx-json-writer.version>
     <vertx-dagger-commons.version>1.210.0</vertx-dagger-commons.version>
-    <txmanager.version>1.167.0</txmanager.version>
+    <txmanager.version>1.168.0</txmanager.version>
 
     <!--plugins-->
     <flatten-maven-plugin.version>1.7.0</flatten-maven-plugin.version>
