@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.1.0 http://maven.apache.org/xsd/maven-4.1.0.xsd">
+  <modelVersion>4.1.0</modelVersion>
 
   <parent>
     <groupId>github.benslabbert.vdw</groupId>
-    <artifactId>vdw-parent</artifactId>
-    <version>${revision}</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <artifactId>app</artifactId>
@@ -37,14 +36,6 @@
       <artifactId>guava</artifactId>
     </dependency>
     <dependency>
-      <groupId>github.benslabbert.txmanager</groupId>
-      <artifactId>agent</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>github.benslabbert.txmanager</groupId>
-      <artifactId>annotation</artifactId>
-    </dependency>
-    <dependency>
       <groupId>github.benslabbert.vdw</groupId>
       <artifactId>spi</artifactId>
       <version>${revision}</version>
@@ -56,19 +47,23 @@
     </dependency>
     <dependency>
       <groupId>github.benslabbert.vdw.codegen</groupId>
+      <artifactId>agent</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>github.benslabbert.vdw.codegen</groupId>
       <artifactId>annotation</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>github.benslabbert.vdw.codegen</groupId>
+      <artifactId>aop</artifactId>
     </dependency>
     <dependency>
       <groupId>github.benslabbert.vdw.codegen</groupId>
       <artifactId>commons</artifactId>
     </dependency>
     <dependency>
-      <groupId>github.benslabbert.vertx-dagger-commons</groupId>
+      <groupId>github.benslabbert.vdw.codegen</groupId>
       <artifactId>launcher</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>github.benslabbert.vertx-dagger-commons</groupId>
-      <artifactId>transaction</artifactId>
     </dependency>
     <dependency>
       <groupId>io.vertx</groupId>
@@ -114,11 +109,6 @@
     <dependency>
       <groupId>github.benslabbert.vdw.codegen</groupId>
       <artifactId>generator</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>github.benslabbert.vertx-json-writer</groupId>
-      <artifactId>annotation</artifactId>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -171,9 +161,9 @@
         <artifactId>byte-buddy-maven-plugin</artifactId>
         <dependencies>
           <dependency>
-            <groupId>github.benslabbert.txmanager</groupId>
-            <artifactId>plugin</artifactId>
-            <version>${txmanager.version}</version>
+            <groupId>github.benslabbert.vdw.codegen</groupId>
+            <artifactId>advice-transformer</artifactId>
+            <version>${github.benslabbert.vdw.codegen.version}</version>
           </dependency>
         </dependencies>
         <executions>
@@ -223,11 +213,6 @@
               <groupId>github.benslabbert.vdw.codegen</groupId>
               <artifactId>generator</artifactId>
               <version>${github.benslabbert.vdw.codegen.version}</version>
-            </path>
-            <path>
-              <groupId>github.benslabbert.vertx-json-writer</groupId>
-              <artifactId>processor</artifactId>
-              <version>${vertx-json-writer.version}</version>
             </path>
             <path>
               <groupId>com.google.errorprone</groupId>
