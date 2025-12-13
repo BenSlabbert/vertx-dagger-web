@@ -22,7 +22,7 @@ jobs:
     - name: "Set up Maven"
       uses: "stCarolas/setup-maven@v5"
       with:
-        maven-version: "3.9.10"
+        maven-version: "4.0.0-rc-5"
     - run: "git fetch --prune --unshallow --tags"
     - run: "mvn -s settings.xml spotless:check deploy"
     - name: "Release"

@@ -17,7 +17,7 @@
         </repository>
         <repository>
           <id>github</id>
-          <url>https://maven.pkg.github.com/BenSlabbert/git-version-extension</url>
+          <url>https://maven.pkg.github.com/BenSlabbert/vertx-dagger-bom</url>
           <snapshots>
             <enabled>true</enabled>
           </snapshots>
@@ -28,8 +28,8 @@
       </repositories>
       <pluginRepositories>
         <pluginRepository>
-          <id>github</id>
-          <url>https://maven.pkg.github.com/BenSlabbert/git-version-extension</url>
+          <id>github-vertx-dagger-bom</id>
+          <url>https://maven.pkg.github.com/BenSlabbert/vertx-dagger-bom</url>
           <snapshots>
             <enabled>true</enabled>
           </snapshots>

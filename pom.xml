@@ -1,24 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.1.0 http://maven.apache.org/xsd/maven-4.1.0.xsd">
+  <modelVersion>4.1.0</modelVersion>
 
   <parent>
     <groupId>github.benslabbert</groupId>
     <artifactId>vertx-dagger-bom</artifactId>
-    <version>3.128.0</version>
+    <version>4.5.0</version>
   </parent>
 
   <groupId>github.benslabbert.vdw</groupId>
   <artifactId>vdw-parent</artifactId>
   <version>${revision}</version>
   <packaging>pom</packaging>
-
-  <modules>
-    <module>app</module>
-    <module>multi-verticle-app</module>
-    <module>spi-dep</module>
-    <module>spi</module>
-  </modules>
 
   <distributionManagement>
     <repository>
@@ -29,29 +22,19 @@
   </distributionManagement>
 
   <properties>
+    <revision>0.0.0-SNAPSHOT</revision>
     <!--config-->
     <docker.skip>false</docker.skip>
     <shade.skip>false</shade.skip>
 
     <!--deps-->
-    <github.benslabbert.vdw.codegen.version>3.77.0</github.benslabbert.vdw.codegen.version>
-    <vertx-json-writer.version>1.201.0</vertx-json-writer.version>
-    <vertx-dagger-commons.version>1.223.0</vertx-dagger-commons.version>
-    <txmanager.version>1.210.0</txmanager.version>
+    <github.benslabbert.vdw.codegen.version>4.1.0</github.benslabbert.vdw.codegen.version>
 
     <!--plugins-->
-    <flatten-maven-plugin.version>1.7.0</flatten-maven-plugin.version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
-      <dependency>
-        <groupId>github.benslabbert.txmanager</groupId>
-        <artifactId>bom</artifactId>
-        <version>${txmanager.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
       <dependency>
         <groupId>github.benslabbert.vdw.codegen</groupId>
         <artifactId>bom</artifactId>
@@ -59,21 +42,14 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      <dependency>
-        <groupId>github.benslabbert.vertx-dagger-commons</groupId>
-        <artifactId>bom</artifactId>
-        <version>${vertx-dagger-commons.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>github.benslabbert.vertx-json-writer</groupId>
-        <artifactId>bom</artifactId>
-        <version>${vertx-json-writer.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
     </dependencies>
   </dependencyManagement>
+
+  <subprojects>
+    <subproject>app</subproject>
+    <subproject>multi-verticle-app</subproject>
+    <subproject>spi-dep</subproject>
+    <subproject>spi</subproject>
+  </subprojects>
 
 </project>

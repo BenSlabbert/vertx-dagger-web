@@ -1,14 +1,14 @@
 /* Licensed under Apache-2.0 2024. */
 package github.benslabbert.vdw.app.web.handler;
 
-import github.benslabbert.txmanager.annotation.AfterCommit;
-import github.benslabbert.txmanager.annotation.BeforeCommit;
-import github.benslabbert.txmanager.annotation.Transactional;
-import github.benslabbert.vdw.codegen.annotation.HasRole;
-import github.benslabbert.vdw.codegen.annotation.WebHandler;
-import github.benslabbert.vdw.codegen.annotation.WebRequest;
-import github.benslabbert.vdw.codegen.annotation.WebRequest.Body;
-import github.benslabbert.vdw.codegen.annotation.WebRequest.Get;
+import github.benslabbert.vdw.codegen.annotation.auth.HasRole;
+import github.benslabbert.vdw.codegen.annotation.transaction.AfterCommit;
+import github.benslabbert.vdw.codegen.annotation.transaction.BeforeCommit;
+import github.benslabbert.vdw.codegen.annotation.transaction.Transactional;
+import github.benslabbert.vdw.codegen.annotation.web.WebHandler;
+import github.benslabbert.vdw.codegen.annotation.web.WebRequest;
+import github.benslabbert.vdw.codegen.annotation.web.WebRequest.Body;
+import github.benslabbert.vdw.codegen.annotation.web.WebRequest.Get;
 import io.vertx.ext.web.RoutingContext;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;

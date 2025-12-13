@@ -1,7 +1,7 @@
 /* Licensed under Apache-2.0 2024. */
 package github.benslabbert.vdw.app;
 
-import github.benslabbert.vertxdaggercommons.launcher.CustomApplicationHooks;
+import github.benslabbert.vdw.codegen.launcher.CustomApplicationHooks;
 import io.netty.util.internal.logging.InternalLoggerFactory;
 import io.netty.util.internal.logging.Slf4JLoggerFactory;
 import io.vertx.launcher.application.VertxApplication;
