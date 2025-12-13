@@ -1,35 +1,23 @@
 ---
-name: "Java + Maven"
+name: "Copilot Setup Steps"
 "on":
+  workflow_dispatch: null
   push:
-    branches:
-    - "main"
+    paths:
+    - ".github/workflows/copilot-setup-steps.yml"
   pull_request:
-    branches:
-    - "main"
-  workflow_dispatch:
-    inputs:
-      java:
-        description: "Java version to build with (optional)"
-        required: false
-        default: "25"
-      distribution:
-        description: "JDK distribution to use (optional)"
-        required: false
-        default: "graalvm"
+    paths:
+    - ".github/workflows/copilot-setup-steps.yml"
 jobs:
-  build:
+  copilot-setup-steps:
     runs-on: "ubuntu-latest"
     env:
-      GH_TOKEN: "${{secrets.GH_TOKEN}}"
+      GH_TOKEN: "${{ secrets.GH_TOKEN }}"
       TESTCONTAINERS_RYUK_DISABLED: true
-    timeout-minutes: 360
     permissions:
-      actions: "read"
       contents: "read"
-      security-events: "write"
+      security-events: "read"
     strategy:
-      fail-fast: false
       matrix:
         language:
         - "java"
@@ -44,11 +32,11 @@ jobs:
       run: "echo \"DOCKER_HOST=unix:///run/$(id -u)/podman/podman.sock\" >> $GITHUB_ENV"
     - run: "echo \"$DOCKER_HOST\""
     - uses: "actions/checkout@v6"
-    - name: "Set up JDK ${{matrix.java-version}}-${{matrix.distribution}}"
+    - name: "Set up JDK ${{ matrix.java-version }}-${{ matrix.distribution }}"
       uses: "actions/setup-java@v5"
       with:
-        distribution: "${{matrix.distribution}}"
-        java-version: "${{matrix.java-version}}"
+        distribution: "${{ matrix.distribution }}"
+        java-version: "${{ matrix.java-version }}"
         java-package: "jdk"
         cache: "maven"
     - name: "Set up Maven"
@@ -62,14 +50,10 @@ jobs:
         languages: "${{matrix.language}}"
     - run: "podman version"
     - run: "mvn -version"
-    - run: "mvn -s settings.xml spotless:check -Djava.version=${{matrix.java-version}}"
-    - run: "mvn -s settings.xml clean install -Djava.version=${{matrix.java-version}}"
+    - name: "Install"
+      run: "mvn -s settings.xml clean install"
     - name: "Perform CodeQL Analysis"
       uses: "github/codeql-action/analyze@v4"
       if: "${{matrix.distribution == 'graalvm'}}"
-    - name: "Submit Dependency Snapshot"
-      uses: "advanced-security/maven-dependency-submission-action@v5"
-      if: "${{matrix.distribution == 'graalvm'}}"
       with:
-        token: "${{secrets.GH_TOKEN}}"
-        maven-args: "-s settings.xml"
+        upload: "never"
