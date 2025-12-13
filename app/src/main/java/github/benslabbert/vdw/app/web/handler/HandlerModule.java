@@ -3,5 +3,5 @@ package github.benslabbert.vdw.app.web.handler;
 
 import dagger.Module;
 
-@Module(includes = {HomeHandler_Router_ModuleBindings.class})
+@Module(includes = {GeneratedModuleBindings.class})
 public interface HandlerModule {}
