@@ -63,6 +63,10 @@
     </dependency>
     <dependency>
       <groupId>github.benslabbert.vdw.codegen</groupId>
+      <artifactId>config</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>github.benslabbert.vdw.codegen</groupId>
       <artifactId>launcher</artifactId>
     </dependency>
     <dependency>
@@ -110,6 +114,11 @@
       <groupId>github.benslabbert.vdw.codegen</groupId>
       <artifactId>generator</artifactId>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>github.benslabbert.vdw.codegen</groupId>
+      <artifactId>commons-test</artifactId>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>io.vertx</groupId>

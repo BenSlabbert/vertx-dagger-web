@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import github.benslabbert.vdw.app.di.DaggerProvider;
 import github.benslabbert.vdw.app.di.Provider;
+import github.benslabbert.vdw.codegen.config.ApplicationConfig;
+import github.benslabbert.vdw.codegen.config.ApplicationConfigBuilder;
 import io.vertx.core.Vertx;
 import io.vertx.junit5.VertxExtension;
 import io.vertx.junit5.VertxTestContext;
@@ -21,7 +23,12 @@ class CheckStringValidatorTest {
 
   @BeforeEach
   void beforeEach(Vertx vertx) {
-    provider = DaggerProvider.builder().vertx(vertx).build();
+    provider =
+        DaggerProvider.builder()
+            .vertx(vertx)
+            .applicationConfig(
+                ApplicationConfigBuilder.builder().profile(ApplicationConfig.Profile.DEV).build())
+            .build();
     provider.init();
   }
 

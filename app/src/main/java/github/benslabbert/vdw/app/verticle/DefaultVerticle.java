@@ -6,6 +6,7 @@ import github.benslabbert.vdw.app.di.Provider;
 import github.benslabbert.vdw.app.spi.SpiDependency;
 import github.benslabbert.vdw.app.web.RouterFactory;
 import github.benslabbert.vdw.app.web.ServerFactory;
+import github.benslabbert.vdw.codegen.config.ApplicationConfig;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import io.vertx.core.http.HttpServer;
@@ -27,7 +28,8 @@ public class DefaultVerticle extends AbstractVerticle {
   @Override
   public void start(Promise<Void> startPromise) {
     log.info("Starting verticle");
-    provider = DaggerProvider.builder().vertx(vertx).build();
+    ApplicationConfig applicationConfig = ApplicationConfig.fromJson(config());
+    provider = DaggerProvider.builder().vertx(vertx).applicationConfig(applicationConfig).build();
     provider.init();
     SpiDependency spiDependency = provider.spiDependency();
     spiDependency.init(vertx, new Object());
