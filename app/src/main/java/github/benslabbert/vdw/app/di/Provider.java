@@ -12,6 +12,7 @@ import github.benslabbert.vdw.app.web.RouterFactory;
 import github.benslabbert.vdw.app.web.ServerFactory;
 import github.benslabbert.vdw.app.web.handler.HandlerModule;
 import github.benslabbert.vdw.codegen.commons.ValidatorProvider;
+import github.benslabbert.vdw.codegen.config.ApplicationConfig;
 import io.vertx.core.Vertx;
 import jakarta.annotation.Nullable;
 import jakarta.inject.Inject;
@@ -49,6 +50,9 @@ public interface Provider {
 
     @BindsInstance
     Builder vertx(Vertx vertx);
+
+    @BindsInstance
+    Builder applicationConfig(ApplicationConfig applicationConfig);
 
     Provider build();
   }
